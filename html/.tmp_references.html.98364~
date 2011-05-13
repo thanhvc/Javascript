@@ -1,0 +1,59 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+		<title>References</title>
+		<script type="text/javascript">
+			/*
+			// This fragment of code to find out the referecnes in JS
+			var obj = new Object();
+			var objRef = obj;
+			obj.oneProperty = true;
+			
+			//We now see that change is presented in both of object.
+			
+			alert(obj.oneProperty === objRef.oneProperty); 
+			*/
+			
+			/*
+			 // This fragment of code to find out the referecnes in JS
+			var items = new Array("one","two","three");
+			
+			//Create a reference to the array of items.
+			var itemsRef = items;
+			
+			//Add an item to the original array
+			items.push("four");
+			
+			//The length of each arry should the same,
+			// since they both point to the same array object
+			alert(items.length == itemsRef.length);
+			*/
+			
+			/*
+			//The fragment of code to find out when new instance not equal the original object.
+			var items = new Array("one", "two", "three");
+			var itemsRef = items;
+			items = new Array("one", "two");
+			
+			alert(items.length != itemsRef.length);
+			*/
+			
+			
+			var str = "referenc";
+			var strRef = str;
+			
+			//Concatenate some new text onto the string object
+			//NOTE: This creates a new object, and does not modify
+			// the original object.
+			str += "ing";
+			
+			//The values of items and itemRef are NOT equal, as a whole
+			//new string object has been created.
+			
+			alert(str != strRef);
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

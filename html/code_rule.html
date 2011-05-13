@@ -1,0 +1,75 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+        <title>XML Jquery</title>
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.js">
+        </script>
+        <script>
+                                	
+            			$(document).ready(function() {
+                    		$.get('/Javascript/xml/sampleData.xml', function(xml) {
+            					 $('#load').fadeOut();
+                            
+							
+                            $(xml).find("Rule").each(function(){
+                                $(".main").append('<div class="rule"><div class="name">NAME: ' + $(this).find("Name").text() + 
+								'</div>	<div class="reason"><b>WHAT</b>: ' + $(this).find("What").text() +
+								'</div>	<div class="reason"><b>WHY</b>: ' + $(this).find("Why").text() +
+								'</div>	<div class="reason"><b>GOOD</b>:' + $(this).find("Good").text() +  
+								'</div>	<div class="reason"><b>BAD</b>:' + $(this).find("Bad").text() +  
+								'</div><div class="link"><a href="' + $(this).find("Link").text() + '"> References</a></div></div>');
+                                $(".rule").fadeIn(1000);
+                            });
+							
+							
+            			})
+                        });
+                    
+        </script>
+        <style>
+            .main {
+                width: 1000px;
+                margin: 0 auto;
+                height: 130px;
+            }
+            
+            .rule {
+                width: 208px;
+                float: left;
+                margin: 10px;
+                border: 1px #dedede solid;
+                padding: 5px;
+                display: none;
+            }
+            
+            .name {
+                margin-bottom: 6px;
+            }
+            
+            .reason {
+                font-size: 11px;
+                font-family: Geneva, Arial, Helvetica, sans-serif;
+            }
+            
+            .link {
+                font-size: 10px;
+                color: #999;
+                margin-top: 4px;
+            }
+            
+            .loader {
+                height: 11px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="main">
+            <div align="center" class="loader">
+                <img src="loader.gif" id="load" width="16" height="11" align="absmiddle"/>
+            </div>
+        </div>
+        <div class="clear">
+        </div>
+    </body>
+</html>

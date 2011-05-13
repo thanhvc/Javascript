@@ -1,0 +1,32 @@
+<Rules>
+  <Rule>
+    <Id>STC-0001</Id>
+    <Name>Never use stderr or stdout</Name>
+    <What>Using the Standard Output Stream or the Standard Error Output Stream (mainly for logging purpose) in application code is forbidden.</What>
+    <Why>When you run applications in production mode, you want to be able to turn on or off certain categories or level of logging informations.</Why>
+    <Good>Good</Good>
+    <Bad>Bad</Bad>
+    <Control>
+      <RuleType>PMD</RuleType>
+      <RuleControl>SystemPrintln</RuleControl>
+      <RuleSettings>NONE</RuleSettings>
+      <Severity>CRITICAL</Severity>
+    </Control>
+    <Link>https://wiki-int.exoplatform.org/display/DEVSTD/STC-0001#</Link>
+  </Rule>
+  <Rule>
+    <Id>STC-0002</Id>
+    <Name>NullPointer Exception</Name>
+    <What>Using the Standard Output Stream or the Standard Error Output Stream (mainly for logging purpose) in application code is forbidden.</What>
+    <Why>When you run applications in production mode, you want to be able to turn on or off certain categories or level of logging informations.</Why>
+    <Good>Good</Good>
+    <Bad>Bad</Bad>
+    <Control>
+      <RuleType>PMD</RuleType>
+      <RuleControl>SystemPrintln</RuleControl>
+      <RuleSettings>NONE</RuleSettings>
+      <Severity>CRITICAL</Severity>
+    </Control>
+    <Link>https://wiki-int.exoplatform.org/display/DEVSTD/STC-0002#</Link>
+  </Rule>
+</Rules>

@@ -1,0 +1,23 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+		<title>Schedule and Lecture</title>
+		<script src="/Javascript/js/lecture.js"></script>
+		<script type="text/javascript">
+			var schedule = new Schedule([
+               //Create an array of the lecture objects, which
+               //are passed in as the only argurment to the Lecture object
+
+				new Lecture("Gym", "Mr. Smith"),
+				new Lecture("Math", "Mrs Jones"),
+				new Lecture("English", "TBD")
+			]);
+			alert(schedule.display());
+
+		</script>
+	</head>
+	<body>
+		<h1>Lecture testing!</h1>
+	</body>
+</html>

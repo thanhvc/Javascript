@@ -1,0 +1,36 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+		<title>DOM object</title>
+		<script type = 'text/javascript'>
+			window.onload = function () {
+				//find all the <li> elements in the document
+				var li = document.getElementsByTagName("li");
+				//and add a red border around all of them
+				for(var j = 0; j< li.length; j++) {
+					li[j].style.border = "1px solid #000"; 
+				} 
+				
+				// Locate the element with an ID of 'everywhere'
+				
+				var every = document.getElementById("everywhere");
+				
+				// and remove it from document
+				every.parentNode.removeChild(every);
+			};
+		</script>
+	</head>
+	<body>
+		<h1>Introduction to the DOM object</h1>
+		<p class="test"> There are a number of reason why the DOM is awesome, here are some:</p>
+		<ul>
+			<li id="everywhere"> It can be found everywhere</li>
+			<li class="test">It's easy to use.</li>
+			<li class="test">It can help you find whet you want, really quickly.</li>
+			<li class="test">document.getElementById</li>
+		    <li class="test">document.getElementByName</li>
+			<li class="test">document.getElementsByTagName</li>
+		</ul>
+	</body>
+</html>

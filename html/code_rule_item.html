@@ -1,0 +1,137 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+        <title>XML Jquery</title>
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.js">
+        </script>
+        <script>
+        	
+            
+			function Rule(id, content) {
+				this.id = id;
+				this.content = content;
+			}
+			
+			Rule.prototype.getId = function() {
+				return this.id;
+			};
+			Rule.prototype.getContent = function() {
+				return this.content;
+			};
+			
+			function ArrayDecorator(ruleList) {
+				this.ruleList = ruleList;
+			}
+			
+			ArrayDecorator.prototype.find = function(idArg) {
+				var result = null;
+				$.each(this.ruleList, function(idx, rule) {
+					if (rule.getId() == idArg) {
+						result = rule;
+						return;
+					}
+				});
+				return result;
+			};
+			
+			ArrayDecorator.prototype.togge = function(idArg) {
+				$.each(this.ruleList, function(idx, rule) {
+					if (rule.getId() != idArg) {
+						$(".detail" + rule.getId()).hide();
+					} else {
+						$(".detail" + rule.getId()).show();
+					}
+				});
+			};
+			
+			var itemNameList = "";
+			var ruleList = new Array();
+			var arrayDecorator = new ArrayDecorator(ruleList);
+			
+			
+			function show(idArg) {
+				var rule = arrayDecorator.find(idArg);
+				$(".detail" + idArg).html(rule.getContent());
+				arrayDecorator.togge(idArg);
+                $(".rule").fadeIn(1000);
+				
+			};
+			
+            $(document).ready(function(){
+                $.get('/Javascript/xml/sampleData.xml', function(xml){
+                    $('#load').fadeOut();
+                    var pos = 0;
+					var id = "";
+					var name = "";
+					var content = "";
+					
+                    
+                    $(xml).find("Rule").each(function(){
+						id = $(this).find("Id").text();
+						name = $(this).find("Name").text();
+						content = '<div class="rule"><div class="name">' + name +
+                        '</div>	<div class="reason"><b>WHAT</b>:</br> ' + $(this).find("What").text() + 
+                        '</div>	<div class="reason"><b>WHY</b>:</br> ' +  $(this).find("Why").text() +
+                        '</div>	<div class="reason"><b>GOOD</b>:</br> ' +  $(this).find("Good").text() +
+                        '</div>	<div class="reason"><b>BAD</b>:</br> ' +   $(this).find("Bad").text() +
+                        '</div><div class="link"><a href="' + $(this).find("Link").text() + '"> References</a></div></div>';
+						
+						
+                        itemNameList += '<div class="rule"><div class="name"><a id="' + id + '" href=javascript:show("' + id + '")>' + name + '</a></div><div class="detail' + id + '"></div></div></br>';
+                        ruleList[pos] = new Rule(id, content);
+                        pos++;
+                        
+                    });
+                    if (ruleList.length > 0) {
+						$(".main").prepend(itemNameList);
+                    	$(".rule").fadeIn(1000);
+					}
+                    
+                })
+            });
+        </script>
+        <style>
+            .main {
+                width: 1000px;
+                margin: 0 auto;
+                height: 130px;
+            }
+            
+            .rule {
+                width: 208px;
+                border: 1px #dedede solid;
+                display: none;
+            }
+            
+            .name {
+				font-family: Geneva, Arial, Helvetica, sans-serif;
+				background-color: #999;
+            }
+            
+            .reason {
+                font-size: 11px;
+                font-family: Geneva, Arial, Helvetica, sans-serif;
+            }
+            
+            .link {
+                font-size: 10px;
+                color: #999;
+                margin-top: 4px;
+            }
+            
+            .loader {
+                height: 11px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="main">
+            <div align="center" class="loader">
+                <img src="loader.gif" id="load" width="16" height="11" align="absmiddle"/>
+            </div>
+        </div>
+        <div class="clear">
+        </div>
+    </body>
+</html>
